@@ -15,10 +15,11 @@ import AdbIcon from '@mui/icons-material/Adb';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
+import MoreIcon from '@mui/icons-material/MoreVert';
 
 
 
-const pages = ['Products', 'Pricing', 'Blog'];
+const pages = ['Contact' , 'About'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function Navbar() {
@@ -48,7 +49,7 @@ function Navbar() {
       backgroundColor: alpha(theme.palette.common.white, 0.25),
     },
     marginLeft: 0,
-    width: '100%',
+    width: '60%',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(1),
       width: 'auto',
@@ -172,10 +173,7 @@ function Navbar() {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> */}
+          <Box sx={{ flexGrow: 1, display: "flex" , justifyContent : "flex-end"}}>
                 <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -185,8 +183,11 @@ function Navbar() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
-              </IconButton>
-            </Tooltip>
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              <MoreIcon />
+            </IconButton>
+          </Tooltip>
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
