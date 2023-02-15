@@ -33,6 +33,7 @@ const Todo = () => {
     const [address, setAddress] = useState<string>('')
     const [date, setDate] = useState<string>('')
     const [phone, setPhone] = useState<string>('')
+    const [todoIndex, setTodoIndex] = useState<number>(0)
     const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
     const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -43,16 +44,37 @@ const Todo = () => {
         setAnchorElUser(null);
     };
 
+    console.log(todoIndex);
+    
+
     // start Todo Add function
-    const handleAdding = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        e.preventDefault();
+    const handleAdding = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        // todolist.map((data, id) => {
+        //     if (todoIndex === id) {
+        //         let objectTodo = todolist[id]
+        //         objectTodo.name = name
+        //         objectTodo.address = address
+        //         objectTodo.phone = phone
+        //         objectTodo.date = date
+        //     } else {
+        //         setTodolist([...todolist,
+        //         {
+        //             name: name,
+        //             address: address,
+        //             date: date,
+        //             phone: phone
+        //         }])
+        //     }
+        //     return data
+        // })
         setTodolist([...todolist,
-        {
-            name: name,
-            address: address,
-            date: date,
-            phone: phone
-        }])
+            {
+                name: name,
+                address: address,
+                date: date,
+                phone: phone
+            }])
         setName('')
         setAddress('')
         setDate('')
@@ -87,6 +109,7 @@ const Todo = () => {
 
     // start Todo Edit function
     const handleEditing = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, index: number) => {
+        setTodoIndex(index)
         e.preventDefault()
         todolist.map((data, id) => {
             if (id === index) {
@@ -94,9 +117,9 @@ const Todo = () => {
                 setAddress(data.address)
                 setPhone(data.phone)
                 setDate(data.date)
-                let newTodoList = [...todolist]
-                newTodoList.splice(index, 1)
-                setTodolist(newTodoList)
+                // let newTodoList = [...todolist]
+                // newTodoList.splice(index, 1)
+                // setTodolist(newTodoList)
             }
             return data
         })
@@ -109,13 +132,13 @@ const Todo = () => {
             <Container>
                 <Row className='todo-row'>
                     <Col className='col-1' xs={12} sm={12} md={6} lg={6}>
-                        <form className='form'>
+                        <form className='form' onSubmit={handleAdding}>
                             <p className='form-title'>Form</p>
                             <input required value={name} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setName(event.target.value)} type="text" placeholder='Name' name="name" />
                             <input required value={address} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setAddress(event.target.value)} type="text" placeholder='Address' name="address" />
                             <input required value={phone} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setPhone(event.target.value)} type="text" placeholder='01*********' name="telephone" />
                             <input required value={date} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setDate(event.target.value)} type="date" name="date" />
-                            <IconButton onClick={handleAdding} sx={{ p: 0 }}>
+                            <IconButton type='submit' sx={{ p: 0 }}>
                                 < MdOutlineAddBox color='#fff' size={30} />
                             </IconButton>
                         </form>
@@ -155,12 +178,12 @@ const Todo = () => {
                                                 >
                                                     <MenuItem onClick={handleCloseUserMenu}>
                                                         <IconButton onClick={(e) => handleEditing(e, index)} sx={{ p: 0 }}>
-                                                            <Typography style={{ marginRight: "4px" }}>Edit</Typography><FaEdit size={18} />
+                                                            <Typography style={{ marginRight: "24px" }}>Edit</Typography><FaEdit size={18} />
                                                         </IconButton>
                                                     </MenuItem>
                                                     <MenuItem onClick={handleCloseUserMenu}>
                                                         <IconButton onClick={(e) => handleDeleting(e, index)} sx={{ p: 0 }}>
-                                                            <Typography>Delete</Typography><AiFillDelete size={18} />
+                                                            <Typography style={{ marginRight: "4px" }}>Delete</Typography><AiFillDelete size={18} />
                                                         </IconButton>
                                                     </MenuItem>
                                                 </Menu>

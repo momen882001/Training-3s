@@ -1,5 +1,5 @@
 body {
-    background-color: #fff !important;
+    background-color: #f7f7f7 !important;
 }
 
 .form {
@@ -40,26 +40,26 @@ body {
     background-color: #1976d2;
     border-radius: 10px;
     overflow-y: scroll;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+}
+
+
+.form-result {
+    width: 90%;
+    height: auto;
+    background-color: #fff;
+    padding-left: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-radius: 10px;
+    margin-left: 5%;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
 }
 
 .text-no-items {
     color: #fff;
     font-size: x-large;
     font-family: sans-serif;
-}
-
-.form-result {
-    width: 90%;
-    height: auto;
-    background-color: #f5f5f5;
-    padding-left: 0.5rem;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    border-radius: 10px;
-    margin-left: 5%;
-    margin-bottom: 1.5rem;
 }
 
 .name-more-container {
