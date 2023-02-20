@@ -136,11 +136,16 @@ function Navbar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem  onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">
+                  <a className='about-link' href="#about">About</a>
+                  </Typography>
                 </MenuItem>
-              ))}
+                <MenuItem  onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">
+                  <a className='contact-link' href="#contact">Contact</a>
+                  </Typography>
+                </MenuItem>
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -163,15 +168,18 @@ function Navbar() {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
               <Button
-                key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                <a className='about-link' href="#about">About</a>
               </Button>
-            ))}
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                <a className='contact-link' href="#contact">Contact</a>
+              </Button>
           </Box>
 
           <Box sx={{ flexGrow: 1, display: "flex" , justifyContent : "flex-end"}}>

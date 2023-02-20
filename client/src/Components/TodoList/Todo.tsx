@@ -33,7 +33,6 @@ const Todo = () => {
     const [address, setAddress] = useState<string>('')
     const [date, setDate] = useState<string>('')
     const [phone, setPhone] = useState<string>('')
-    // const [todoIndex, setTodoIndex] = useState<number>(0)
     let todoIndex = useRef<number | undefined>(undefined)
     // const [todoIndex, setTodoIndex] = useState<number>(0)
     const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
