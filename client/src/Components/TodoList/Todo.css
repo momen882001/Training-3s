@@ -40,6 +40,7 @@ body {
     background-color: #1976d2;
     border-radius: 10px;
     overflow-y: scroll;
+    position: relative;
 }
 
 
@@ -60,6 +61,10 @@ body {
     color: #fff;
     font-size: x-large;
     font-family: sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 
 .name-more-container {

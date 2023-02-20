@@ -2,7 +2,7 @@ import './Todo.css'
 import { MdOutlineAddBox } from 'react-icons/md';
 import { FaEdit } from 'react-icons/fa';
 import { AiFillDelete } from 'react-icons/ai';
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Swal from 'sweetalert2'
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
@@ -10,8 +10,8 @@ import Menu from '@mui/material/Menu';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import MoreIcon from '@mui/icons-material/MoreVert';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
+// import Box from '@mui/material/Box';
+// import TextField from '@mui/material/TextField';
 // import { InputBase } from '@mui/material';
 import { Container } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
@@ -33,18 +33,23 @@ const Todo = () => {
     const [address, setAddress] = useState<string>('')
     const [date, setDate] = useState<string>('')
     const [phone, setPhone] = useState<string>('')
-    const [todoIndex, setTodoIndex] = useState<number>(0)
+    // const [todoIndex, setTodoIndex] = useState<number>(0)
+    let todoIndex = useRef<number | undefined>(undefined)
+    // const [todoIndex, setTodoIndex] = useState<number>(0)
     const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
-    const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+    const handleOpenUserMenu = ( event : React.MouseEvent<HTMLButtonElement, MouseEvent>, index : number) => {
         setAnchorElUser(event.currentTarget);
+        debugger;
+        todoIndex.current = index
     };
 
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
+        todoIndex.current = undefined
     };
 
-    console.log(todoIndex);
+    // console.log(todoIndex);
     
 
     // start Todo Add function
@@ -84,6 +89,7 @@ const Todo = () => {
 
     // start Todo Delete function
     const handleDeleting = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, index: number) => {
+     debugger;
         e.preventDefault()
         Swal.fire({
             title: 'Are you sure?',
@@ -109,7 +115,7 @@ const Todo = () => {
 
     // start Todo Edit function
     const handleEditing = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, index: number) => {
-        setTodoIndex(index)
+        // setTodoIndex(index)
         e.preventDefault()
         todolist.map((data, id) => {
             if (id === index) {
@@ -145,9 +151,8 @@ const Todo = () => {
                     </Col>
                     <Col className='col-2' xs={12} sm={12} md={6} lg={6}>
                         <div className='form-results'>
-                            {todolist.length === 0 ?
-                                <p className='text-no-items'>There are no items</p> :
-                                todolist.map((todo, index) => (
+                            
+                                {todolist.map((todo, index) => (
                                     <div key={index} className="form-result" >
                                         <div className='name-more-container'>
                                             <div className='name'>
@@ -155,35 +160,35 @@ const Todo = () => {
                                                 <p>{todo.name}</p>
                                             </div>
                                             <div className='more-icon'>
-                                                <Tooltip title="Open settings">
-                                                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                                        <MoreIcon />
+                                                <Tooltip  title="Open settings">
+                                                    <IconButton onClick={(e) => handleOpenUserMenu(e,index)} sx={{ p: 0 }}>
+                                                        <MoreIcon />{index}
                                                     </IconButton>
                                                 </Tooltip>
                                                 <Menu
                                                     sx={{ mt: '45px' }}
-                                                    id="menu-appbar"
+                                                    id={index.toString()}
                                                     anchorEl={anchorElUser}
-                                                    anchorOrigin={{
-                                                        vertical: 'top',
-                                                        horizontal: 'right',
-                                                    }}
-                                                    keepMounted
-                                                    transformOrigin={{
-                                                        vertical: 'top',
-                                                        horizontal: 'right',
-                                                    }}
-                                                    open={Boolean(anchorElUser)}
+                                                    // anchorOrigin={{
+                                                    //     vertical: 'top',
+                                                    //     horizontal: 'right',
+                                                    // }}
+                                                    // keepMounted
+                                                    // transformOrigin={{
+                                                    //     vertical: 'top',
+                                                    //     horizontal: 'right',
+                                                    // }}
+                                                    open={todoIndex.current === index}
                                                     onClose={handleCloseUserMenu}
                                                 >
                                                     <MenuItem onClick={handleCloseUserMenu}>
                                                         <IconButton onClick={(e) => handleEditing(e, index)} sx={{ p: 0 }}>
-                                                            <Typography style={{ marginRight: "24px" }}>Edit</Typography><FaEdit size={18} />
+                                                            <Typography style={{ marginRight: "24px" }}>Edit: {index}</Typography><FaEdit size={18} />
                                                         </IconButton>
                                                     </MenuItem>
                                                     <MenuItem onClick={handleCloseUserMenu}>
                                                         <IconButton onClick={(e) => handleDeleting(e, index)} sx={{ p: 0 }}>
-                                                            <Typography style={{ marginRight: "4px" }}>Delete</Typography><AiFillDelete size={18} />
+                                                            <Typography style={{ marginRight: "4px" }}>Delete:{index}</Typography><AiFillDelete size={18} />
                                                         </IconButton>
                                                     </MenuItem>
                                                 </Menu>
