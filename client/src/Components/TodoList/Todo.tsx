@@ -25,7 +25,8 @@ const Todo = () => {
         name: string,
         address: string,
         date: string,
-        phone: string
+        phone: string,
+        id: number
     }
 
     const [todolist, setTodolist] = useState<Todo[]>([])
@@ -33,13 +34,12 @@ const Todo = () => {
     const [address, setAddress] = useState<string>('')
     const [date, setDate] = useState<string>('')
     const [phone, setPhone] = useState<string>('')
-    let todoIndex = useRef<number | undefined>(undefined)
-    // const [todoIndex, setTodoIndex] = useState<number>(0)
+    const [todoId, setTodoId] = useState<number>(0)
     const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+    let todoIndex = useRef<number | undefined>(undefined)
 
-    const handleOpenUserMenu = ( event : React.MouseEvent<HTMLButtonElement, MouseEvent>, index : number) => {
+    const handleOpenUserMenu = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, index: number) => {
         setAnchorElUser(event.currentTarget);
-        debugger;
         todoIndex.current = index
     };
 
@@ -49,46 +49,65 @@ const Todo = () => {
     };
 
     // console.log(todoIndex);
-    
+
 
     // start Todo Add function
     const handleAdding = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        // todolist.map((data, id) => {
-        //     if (todoIndex === id) {
-        //         let objectTodo = todolist[id]
-        //         objectTodo.name = name
-        //         objectTodo.address = address
-        //         objectTodo.phone = phone
-        //         objectTodo.date = date
-        //     } else {
-        //         setTodolist([...todolist,
-        //         {
-        //             name: name,
-        //             address: address,
-        //             date: date,
-        //             phone: phone
-        //         }])
-        //     }
-        //     return data
-        // })
-        setTodolist([...todolist,
+        if (todolist.length === 0) {
+            console.log("1st condition");
+            setTodolist([...todolist,
             {
                 name: name,
                 address: address,
                 date: date,
-                phone: phone
+                phone: phone,
+                id: todoId
             }])
-        setName('')
-        setAddress('')
-        setDate('')
-        setPhone('')
+            setName('')
+            setAddress('')
+            setDate('')
+            setPhone('')
+            setTodoId(todoId + 1)
+        } else {
+            todolist.map((data) => {
+                if (data.id === undefined) {
+                    console.log("dakhlt el map");
+                    setTodolist([...todolist,
+                    {
+                        name: name,
+                        address: address,
+                        date: date,
+                        phone: phone,
+                        id: todoId
+                    }])
+                    setName('')
+                    setAddress('')
+                    setDate('')
+                    setPhone('')
+                    setTodoId(todoId + 1)
+                } else {
+                    console.log("edit box");
+                    console.log(data.id);
+                    console.log(todoId);
+                    let newTodoList = todolist[data.id]
+                    newTodoList.name = name
+                    newTodoList.address = address
+                    newTodoList.phone = phone
+                    newTodoList.date = date
+                    setName('')
+                    setAddress('')
+                    setDate('')
+                    setPhone('')
+                    setTodoId(todoId + 1)
+                }
+            })
+        }
     }
     // End Todo Add function
 
     // start Todo Delete function
     const handleDeleting = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, index: number) => {
-     debugger;
         e.preventDefault()
         Swal.fire({
             title: 'Are you sure?',
@@ -114,7 +133,6 @@ const Todo = () => {
 
     // start Todo Edit function
     const handleEditing = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, index: number) => {
-        // setTodoIndex(index)
         e.preventDefault()
         todolist.map((data, id) => {
             if (id === index) {
@@ -122,9 +140,6 @@ const Todo = () => {
                 setAddress(data.address)
                 setPhone(data.phone)
                 setDate(data.date)
-                // let newTodoList = [...todolist]
-                // newTodoList.splice(index, 1)
-                // setTodolist(newTodoList)
             }
             return data
         })
@@ -133,7 +148,7 @@ const Todo = () => {
 
 
     return (
-        <div>
+        <div style={{ height: "83vh" }}>
             <Container>
                 <Row className='todo-row'>
                     <Col className='col-1' xs={12} sm={12} md={6} lg={6}>
@@ -150,8 +165,9 @@ const Todo = () => {
                     </Col>
                     <Col className='col-2' xs={12} sm={12} md={6} lg={6}>
                         <div className='form-results'>
-                            
-                                {todolist.map((todo, index) => (
+                            {todolist.length === 0 ?
+                                <p className='text-no-items'>There are no items</p> :
+                                todolist.map((todo, index) => (
                                     <div key={index} className="form-result" >
                                         <div className='name-more-container'>
                                             <div className='name'>
@@ -159,35 +175,35 @@ const Todo = () => {
                                                 <p>{todo.name}</p>
                                             </div>
                                             <div className='more-icon'>
-                                                <Tooltip  title="Open settings">
-                                                    <IconButton onClick={(e) => handleOpenUserMenu(e,index)} sx={{ p: 0 }}>
-                                                        <MoreIcon />{index}
+                                                <Tooltip title="Open options">
+                                                    <IconButton onClick={(e) => handleOpenUserMenu(e, index)} sx={{ p: 0 }}>
+                                                        <MoreIcon />
                                                     </IconButton>
                                                 </Tooltip>
                                                 <Menu
                                                     sx={{ mt: '45px' }}
                                                     id={index.toString()}
                                                     anchorEl={anchorElUser}
-                                                    // anchorOrigin={{
-                                                    //     vertical: 'top',
-                                                    //     horizontal: 'right',
-                                                    // }}
-                                                    // keepMounted
-                                                    // transformOrigin={{
-                                                    //     vertical: 'top',
-                                                    //     horizontal: 'right',
-                                                    // }}
+                                                    anchorOrigin={{
+                                                        vertical: 'top',
+                                                        horizontal: 'right',
+                                                    }}
+                                                    keepMounted
+                                                    transformOrigin={{
+                                                        vertical: 'top',
+                                                        horizontal: 'right',
+                                                    }}
                                                     open={todoIndex.current === index}
                                                     onClose={handleCloseUserMenu}
                                                 >
                                                     <MenuItem onClick={handleCloseUserMenu}>
                                                         <IconButton onClick={(e) => handleEditing(e, index)} sx={{ p: 0 }}>
-                                                            <Typography style={{ marginRight: "24px" }}>Edit: {index}</Typography><FaEdit size={18} />
+                                                            <Typography style={{ marginRight: "24px" }}>Edit</Typography><FaEdit size={18} />
                                                         </IconButton>
                                                     </MenuItem>
                                                     <MenuItem onClick={handleCloseUserMenu}>
                                                         <IconButton onClick={(e) => handleDeleting(e, index)} sx={{ p: 0 }}>
-                                                            <Typography style={{ marginRight: "4px" }}>Delete:{index}</Typography><AiFillDelete size={18} />
+                                                            <Typography style={{ marginRight: "4px" }}>Delete</Typography><AiFillDelete size={18} />
                                                         </IconButton>
                                                     </MenuItem>
                                                 </Menu>

@@ -1,0 +1,17 @@
+.about-link {
+    text-decoration: none;
+    color: white;
+    transition: 0.5s ease;
+}
+
+.contact-link {
+    text-decoration: none;
+    color: white;
+    transition: 0.5s ease;
+
+}
+
+.about-link:hover,
+.contact-link:hover {
+    color: white;
+}

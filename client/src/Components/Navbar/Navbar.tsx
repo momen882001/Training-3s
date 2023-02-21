@@ -16,10 +16,9 @@ import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import './Navbar.css'
 
 
-
-const pages = ['Contact' , 'About'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function Navbar() {
