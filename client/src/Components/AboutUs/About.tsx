@@ -15,8 +15,9 @@ const About = () => {
           Expedita pariatur delectus dicta harum corporis nisi,
            assumenda aspernatur voluptate! Ipsa,
           temporibus maxime! Rem!</p>
+          <button>Learn more</button>
       </section>
-      
+
       <section className="img-side">
         <img src={imgLeft} alt="" />
       </section>

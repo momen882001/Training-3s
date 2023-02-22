@@ -14,21 +14,38 @@
 
 .about-contain h3 {
     font-size: 3.7rem;
-    color: gray;
+    color: #015288;
 }
 
 .about-contain p {
     font-size: 1.2rem;
-    padding: 2.2rem;
+    padding: 0rem 2.2rem 2.2rem 2.2rem;
+    text-align: center;
+    opacity: 0.8;
+}
+
+.about-contain button {
+   border-radius: 10px;
+   padding: 0.5rem 1rem 0.5rem 1rem;
+   color: white;
+   text-transform: capitalize;
+   background-color: #015288;
+   border: none;
+   outline: none;
+   transition: 0.5s ease;
+}
+
+.about-contain button:hover {
+    margin-left: 1rem;
 }
 
 .seperator {
     width: 8.5rem;
     height: 2px;
-    background-color: #333;
+    background-color: #fd7c78;
     border-radius: 10px;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
 }
 
 .img-side {
@@ -42,3 +59,16 @@
 .img-side img {
     max-width: 100%;
 }
+
+@media (max-width: 830px) {
+
+    .about-contain {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+  
+    .img-side {
+        display: none;
+    }
+  }
