@@ -84,7 +84,7 @@ function Navbar() {
   }));
 
   return (
-    <AppBar position="static">
+    <AppBar style={{backgroundColor:"#191919"}} position="sticky">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -136,14 +136,18 @@ function Navbar() {
               }}
             >
                 <MenuItem  onClick={handleCloseNavMenu}>
+                  <a className='about-link' style={{color:"black"}} href="#about">
                   <Typography textAlign="center">
-                  <a className='about-link' href="#about">About</a>
+                    About
                   </Typography>
+                    </a>
                 </MenuItem>
                 <MenuItem  onClick={handleCloseNavMenu}>
+                  <a className='contact-link' style={{color:"black"}} href="#contact">
                   <Typography textAlign="center">
-                  <a className='contact-link' href="#contact">Contact</a>
+                    Contact
                   </Typography>
+                    </a>
                 </MenuItem>
             </Menu>
           </Box>
@@ -191,7 +195,7 @@ function Navbar() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
-            <Tooltip title="Open settings">
+            <Tooltip style={{color:"#fff"}} title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
               <MoreIcon />
             </IconButton>
