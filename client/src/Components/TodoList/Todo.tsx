@@ -3,7 +3,7 @@ import { IoIosAddCircle } from 'react-icons/io';
 import { FaEdit } from 'react-icons/fa';
 import { AiFillDelete } from 'react-icons/ai';
 import { TbArrowBigTop } from 'react-icons/tb';
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState , useEffect} from 'react'
 import Swal from 'sweetalert2'
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
@@ -12,6 +12,8 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import imgLeft from '../../assets/todo.png'
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 
 const Todo = () => {
@@ -140,6 +142,11 @@ const Todo = () => {
         })
     }
     // End Todo Edit function
+
+    useEffect(() => {
+        AOS.init();
+        AOS.refresh();
+      }, []);
 
 
     return (

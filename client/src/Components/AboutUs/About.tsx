@@ -7,15 +7,15 @@ const About = () => {
     <div className="about-contain" id='about'>
 
       <section className="about-content">
-        <h3>About Us</h3>
+        <h3 data-aos="fade-right" >About Us</h3>
         <div className="seperator"></div>
-        <p>
+        <p data-aos="fade-right">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit.
           Quas illum repudiandae aliquam consequatur explicabo accusantium ipsum?
           Expedita pariatur delectus dicta harum corporis nisi,
            assumenda aspernatur voluptate! Ipsa,
           temporibus maxime! Rem!</p>
-          <button>Learn more</button>
+          <button data-aos="zoom-out" >Learn more</button>
       </section>
 
       <section className="img-side">
