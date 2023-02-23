@@ -1,5 +1,5 @@
 import './Todo.css'
-import { MdOutlineAddBox } from 'react-icons/md';
+import { IoIosAddCircle } from 'react-icons/io';
 import { FaEdit } from 'react-icons/fa';
 import { AiFillDelete } from 'react-icons/ai';
 import { TbArrowBigTop } from 'react-icons/tb';
@@ -11,7 +11,7 @@ import Menu from '@mui/material/Menu';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import MoreIcon from '@mui/icons-material/MoreVert';
-import imgLeft from '../../assets/todolist.svg'
+import imgLeft from '../../assets/todo.png'
 
 
 const Todo = () => {
@@ -143,19 +143,20 @@ const Todo = () => {
 
 
     return (
+        <>
         <div id='todo' className="todo-contain">
             <section className="todo-img">
                 <img src={imgLeft} alt="" />
             </section>
             <section className="todo-content">
+                <h3>Todo form</h3>
+                <div className="separator"></div>
                 <form className='form' onSubmit={handleAdding}>
                     <input required value={name} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setName(event.target.value)} type="text" placeholder='Name' name="name" />
                     <input required value={address} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setAddress(event.target.value)} type="text" placeholder='Address' name="address" />
                     <input required value={phone} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setPhone(event.target.value)} type="text" placeholder='01*********' name="telephone" />
                     <input required value={date} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setDate(event.target.value)} type="date" name="date" />
-                    <IconButton type='submit' sx={{ p: 0 }}>
-                        < MdOutlineAddBox color='#fff' size={30} />
-                    </IconButton>
+                    <button type='submit' className='add-btn'>Add <IoIosAddCircle size={15}/> </button>
                 </form>
                 <div className='form-results'>
                     {todolist.length === 0 ?
@@ -164,7 +165,7 @@ const Todo = () => {
                             <div key={index} className="form-result" >
                                 <div className='name-more-container'>
                                     <div className='name'>
-                                        <label>Name:</label>
+                                        <label>Name :</label>
                                         <p>{todo.name}</p>
                                     </div>
                                     <div className='more-icon'>
@@ -203,15 +204,15 @@ const Todo = () => {
                                     </div>
                                 </div>
                                 <div className='address'>
-                                    <label>Address:</label>
+                                    <label>Address :</label>
                                     <p>{todo.address}</p>
                                 </div>
                                 <div className='phone'>
-                                    <label>Phone:</label>
+                                    <label>Phone :</label>
                                     <p>{todo.phone}</p>
                                 </div>
                                 <div className='date'>
-                                    <label>Date:</label>
+                                    <label>Date :</label>
                                     <p>{todo.date}</p>
                                 </div>
                             </div>
@@ -219,11 +220,13 @@ const Todo = () => {
                 </div>
                 <a href="#todo">
                 <div className="return-icon">
-                    <TbArrowBigTop size={27} style={{color:"#313f4a"}}/>
+                    <TbArrowBigTop size={27} style={{color:"#191919"}}/>
                 </div>
                 </a>
             </section>
         </div>
+                <div className="separator-section"></div>
+        </>
     )
 }
 
