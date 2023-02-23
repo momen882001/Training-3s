@@ -2,6 +2,7 @@ import './Todo.css'
 import { MdOutlineAddBox } from 'react-icons/md';
 import { FaEdit } from 'react-icons/fa';
 import { AiFillDelete } from 'react-icons/ai';
+import { TbArrowBigTop } from 'react-icons/tb';
 import React, { useRef, useState } from 'react'
 import Swal from 'sweetalert2'
 import IconButton from '@mui/material/IconButton';
@@ -10,13 +11,7 @@ import Menu from '@mui/material/Menu';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import MoreIcon from '@mui/icons-material/MoreVert';
-// import Box from '@mui/material/Box';
-// import TextField from '@mui/material/TextField';
-// import { InputBase } from '@mui/material';
-import { Container } from 'react-bootstrap';
-import { Row } from 'react-bootstrap';
-import { Col } from 'react-bootstrap';
-
+import imgLeft from '../../assets/todolist.svg'
 
 
 const Todo = () => {
@@ -148,85 +143,86 @@ const Todo = () => {
 
 
     return (
-        <div style={{ height: "83vh" }}>
-            <Container>
-                <Row className='todo-row'>
-                    <Col className='col-1' xs={12} sm={12} md={6} lg={6}>
-                        <form className='form' onSubmit={handleAdding}>
-                            <p className='form-title'>Form</p>
-                            <input required value={name} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setName(event.target.value)} type="text" placeholder='Name' name="name" />
-                            <input required value={address} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setAddress(event.target.value)} type="text" placeholder='Address' name="address" />
-                            <input required value={phone} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setPhone(event.target.value)} type="text" placeholder='01*********' name="telephone" />
-                            <input required value={date} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setDate(event.target.value)} type="date" name="date" />
-                            <IconButton type='submit' sx={{ p: 0 }}>
-                                < MdOutlineAddBox color='#fff' size={30} />
-                            </IconButton>
-                        </form>
-                    </Col>
-                    <Col className='col-2' xs={12} sm={12} md={6} lg={6}>
-                        <div className='form-results'>
-                            {todolist.length === 0 ?
-                                <p className='text-no-items'>There are no items</p> :
-                                todolist.map((todo, index) => (
-                                    <div key={index} className="form-result" >
-                                        <div className='name-more-container'>
-                                            <div className='name'>
-                                                <label>Name:</label>
-                                                <p>{todo.name}</p>
-                                            </div>
-                                            <div className='more-icon'>
-                                                <Tooltip title="Open options">
-                                                    <IconButton onClick={(e) => handleOpenUserMenu(e, index)} sx={{ p: 0 }}>
-                                                        <MoreIcon />
-                                                    </IconButton>
-                                                </Tooltip>
-                                                <Menu
-                                                    sx={{ mt: '45px' }}
-                                                    id={index.toString()}
-                                                    anchorEl={anchorElUser}
-                                                    anchorOrigin={{
-                                                        vertical: 'top',
-                                                        horizontal: 'right',
-                                                    }}
-                                                    keepMounted
-                                                    transformOrigin={{
-                                                        vertical: 'top',
-                                                        horizontal: 'right',
-                                                    }}
-                                                    open={todoIndex.current === index}
-                                                    onClose={handleCloseUserMenu}
-                                                >
-                                                    <MenuItem onClick={handleCloseUserMenu}>
-                                                        <IconButton onClick={(e) => handleEditing(e, index)} sx={{ p: 0 }}>
-                                                            <Typography style={{ marginRight: "24px" }}>Edit</Typography><FaEdit size={18} />
-                                                        </IconButton>
-                                                    </MenuItem>
-                                                    <MenuItem onClick={handleCloseUserMenu}>
-                                                        <IconButton onClick={(e) => handleDeleting(e, index)} sx={{ p: 0 }}>
-                                                            <Typography style={{ marginRight: "4px" }}>Delete</Typography><AiFillDelete size={18} />
-                                                        </IconButton>
-                                                    </MenuItem>
-                                                </Menu>
-                                            </div>
-                                        </div>
-                                        <div className='address'>
-                                            <label>Address:</label>
-                                            <p>{todo.address}</p>
-                                        </div>
-                                        <div className='phone'>
-                                            <label>Phone:</label>
-                                            <p>{todo.phone}</p>
-                                        </div>
-                                        <div className='date'>
-                                            <label>Date:</label>
-                                            <p>{todo.date}</p>
-                                        </div>
+        <div id='todo' className="todo-contain">
+            <section className="todo-img">
+                <img src={imgLeft} alt="" />
+            </section>
+            <section className="todo-content">
+                <form className='form' onSubmit={handleAdding}>
+                    <input required value={name} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setName(event.target.value)} type="text" placeholder='Name' name="name" />
+                    <input required value={address} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setAddress(event.target.value)} type="text" placeholder='Address' name="address" />
+                    <input required value={phone} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setPhone(event.target.value)} type="text" placeholder='01*********' name="telephone" />
+                    <input required value={date} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setDate(event.target.value)} type="date" name="date" />
+                    <IconButton type='submit' sx={{ p: 0 }}>
+                        < MdOutlineAddBox color='#fff' size={30} />
+                    </IconButton>
+                </form>
+                <div className='form-results'>
+                    {todolist.length === 0 ?
+                        <p className='text-no-items'>There are no items</p> :
+                        todolist.map((todo, index) => (
+                            <div key={index} className="form-result" >
+                                <div className='name-more-container'>
+                                    <div className='name'>
+                                        <label>Name:</label>
+                                        <p>{todo.name}</p>
                                     </div>
-                                ))}
-                        </div>
-                    </Col>
-                </Row>
-            </Container>
+                                    <div className='more-icon'>
+                                        <Tooltip style={{color:"#fff"}} title="Open options">
+                                            <IconButton onClick={(e) => handleOpenUserMenu(e, index)} sx={{ p: 0 }}>
+                                                <MoreIcon />
+                                            </IconButton>
+                                        </Tooltip>
+                                        <Menu
+                                            sx={{ mt: '45px' }}
+                                            id={index.toString()}
+                                            anchorEl={anchorElUser}
+                                            anchorOrigin={{
+                                                vertical: 'top',
+                                                horizontal: 'right',
+                                            }}
+                                            keepMounted
+                                            transformOrigin={{
+                                                vertical: 'top',
+                                                horizontal: 'right',
+                                            }}
+                                            open={todoIndex.current === index}
+                                            onClose={handleCloseUserMenu}
+                                        >
+                                            <MenuItem onClick={handleCloseUserMenu}>
+                                                <IconButton onClick={(e) => handleEditing(e, index)} sx={{ p: 0 }}>
+                                                    <Typography style={{ marginRight: "24px" }}>Edit</Typography><FaEdit size={18} />
+                                                </IconButton>
+                                            </MenuItem>
+                                            <MenuItem onClick={handleCloseUserMenu}>
+                                                <IconButton onClick={(e) => handleDeleting(e, index)} sx={{ p: 0 }}>
+                                                    <Typography style={{ marginRight: "4px" }}>Delete</Typography><AiFillDelete size={18} />
+                                                </IconButton>
+                                            </MenuItem>
+                                        </Menu>
+                                    </div>
+                                </div>
+                                <div className='address'>
+                                    <label>Address:</label>
+                                    <p>{todo.address}</p>
+                                </div>
+                                <div className='phone'>
+                                    <label>Phone:</label>
+                                    <p>{todo.phone}</p>
+                                </div>
+                                <div className='date'>
+                                    <label>Date:</label>
+                                    <p>{todo.date}</p>
+                                </div>
+                            </div>
+                        ))}
+                </div>
+                <a href="#todo">
+                <div className="return-icon">
+                    <TbArrowBigTop size={27} style={{color:"#313f4a"}}/>
+                </div>
+                </a>
+            </section>
         </div>
     )
 }
