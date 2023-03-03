@@ -1,17 +1,11 @@
-.about-link {
+.about-link , .contact-link , .todo-link  {
     text-decoration: none;
     color: white;
     transition: 0.5s ease;
 }
 
-.contact-link {
-    text-decoration: none;
+/* .about-link:hover,
+.contact-link:hover,
+.todo-link:hover {
     color: white;
-    transition: 0.5s ease;
-
-}
-
-.about-link:hover,
-.contact-link:hover {
-    color: white;
-}
+} */

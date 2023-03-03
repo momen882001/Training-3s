@@ -1,8 +1,12 @@
 .form {
     width: 35rem;
     height: 4rem;
-    background-color: #3b73a9;
-    border-radius: 10px;
+    /* background-color: #3b73a9; */
+    background-image: url(../../assets/pexels-eberhard-grossgasteiger-14730593.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 20px;
     display: flex;
     align-items: center;
     margin-bottom: 1.5rem;
@@ -28,7 +32,7 @@
     width: 35rem;
     height: 20rem;
     /* background-color: #3b73a9; */
-    background-image: url(../../assets/todo_bg.jpg);
+    background-image: url(../../assets/pexels-eberhard-grossgasteiger-14730593.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -43,8 +47,11 @@
 .form-result {
     width: auto;
     height: auto;
-    background-color: #464950;
-    color: white;
+    background-color: transparent;
+    border: 0.5px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    color: #e7e7e7;
     padding-left: 0.5rem;
     padding-top: 1rem;
     padding-left: 1rem;
@@ -56,14 +63,20 @@
     margin-top: 1.3rem;
 }
 
-.text-no-items {
-    color: #191919;
+/* .text-no-items {
+    color: #e7e7e7;
     font-size: x-large;
     font-family: sans-serif;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+} */
+
+.items {
+    color: rgb(209, 33, 33);
+    margin-bottom: 5px;
+    font-size: small;
 }
 
 .name-more-container {
@@ -103,6 +116,13 @@
     font-weight: 500;
     text-transform: uppercase;
     font-size: 17px;
+}
+
+.name p,
+.address p,
+.date p,
+.phone p {
+    color: cornflowerblue;
 }
 
 .todo-contain {
@@ -154,7 +174,6 @@
 }
 
 .todo-content h3 {
-    margin-top: -2.5rem;
     font-size: 3rem;
     color: #015288;
     text-transform: capitalize;
@@ -185,7 +204,7 @@
     margin-left: 1.1rem;
     color: #191919;
     text-transform: capitalize;
-    background-color: #afbfe3;
+    background-color: #6195b8;
     border: none;
     outline: none;
     transition: 0.5s ease;

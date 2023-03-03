@@ -86,6 +86,13 @@ const Todo = () => {
             setAddress('')
             setDate('')
             setPhone('')
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Added Successfully',
+                showConfirmButton: false,
+                timer: 1500
+            })
             setTodoId(todoId + 1)
             setEditFlag(false)
         }
@@ -145,13 +152,10 @@ const Todo = () => {
     return (
         <>
             <div id='todo' className="todo-contain">
-                <section className="todo-img">
-                    <img src={imgLeft} alt="" />
-                </section>
                 <section className="todo-content">
-                    <h3>Todo form</h3>
+                    <h3 data-aos="fade-right">Todo form</h3>
                     <div className="separator"></div>
-                    <form className='form' onSubmit={handleAdding}>
+                    <form data-aos="zoom-out" className='form' onSubmit={handleAdding}>
                         <input required value={name} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setName(event.target.value)} type="text" placeholder='Name' name="name" />
                         <input required value={address} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setAddress(event.target.value)} type="text" placeholder='Address' name="address" />
                         <input required value={phone} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setPhone(event.target.value)} type="text" placeholder='01*********' name="telephone" />
@@ -159,9 +163,10 @@ const Todo = () => {
                         {editFlag === false ? <button type='submit' className='add-btn'>Add <IoIosAddCircle size={15} /></button>
                             : <button type='submit' className='add-btn'>Edit <FaEdit size={17} /></button>}
                     </form>
-                    <div className='form-results'>
+                    {todolist.length === 0 ? <p data-aos="zoom-out" className='items'>There are no items</p> : todolist.length === 1 ? <p data-aos="zoom-out" className='items'>There is 1 item in box</p> : <p data-aos="zoom-out" className='items'>There are {todolist.length} items in box</p>}
+                    <div data-aos="zoom-out" className='form-results'>
                         {todolist.length === 0 ?
-                            <p className='text-no-items'>There are no items</p> :
+                            null :
                             todolist.map((todo, index) => (
                                 <div key={index} className="form-result" >
                                     <div className='name-more-container'>
@@ -219,11 +224,14 @@ const Todo = () => {
                                 </div>
                             ))}
                     </div>
-                    <a href="#todo">
+                    <a href="#slider">
                         <div className="return-icon">
                             <TbArrowBigTop size={27} style={{ color: "#191919" }} />
                         </div>
                     </a>
+                </section>
+                <section className="todo-img">
+                    <img src={imgLeft} alt="" />
                 </section>
             </div>
             <div className="separator-section"></div>

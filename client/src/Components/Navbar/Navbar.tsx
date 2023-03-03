@@ -149,6 +149,13 @@ function Navbar() {
                   </Typography>
                     </a>
                 </MenuItem>
+                <MenuItem  onClick={handleCloseNavMenu}>
+                  <a className='todo-link' style={{color:"black"}} href="#todo">
+                  <Typography textAlign="center">
+                    Todo
+                  </Typography>
+                    </a>
+                </MenuItem>
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -182,6 +189,12 @@ function Navbar() {
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 <a className='contact-link' href="#contact">Contact</a>
+              </Button>
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                <a className='todo-link' href="#todo">Todo</a>
               </Button>
           </Box>
 
