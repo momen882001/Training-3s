@@ -84,7 +84,8 @@ function Navbar() {
   }));
 
   return (
-    <AppBar style={{backgroundColor:"#191919"}} position="sticky">
+    <div>
+      <AppBar style={{backgroundColor:"#191919"}} position="sticky">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -239,6 +240,7 @@ function Navbar() {
         </Toolbar>
       </Container>
     </AppBar>
+    </div>
   );
 }
 export default Navbar;

@@ -225,7 +225,7 @@ const Todo = () => {
                             ))}
                     </div>
                     <a href="#slider">
-                        <div className="return-icon">
+                        <div className="return-icon" >
                             <TbArrowBigTop size={27} style={{ color: "#191919" }} />
                         </div>
                     </a>
