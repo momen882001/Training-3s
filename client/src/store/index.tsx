@@ -1,30 +1,18 @@
-import {createSlice , createStore} from '@reduxjs/toolkit'
-
-export type reducerState = {
-    value: number,
-    name : string
-}
-
-export type reducerAction = {
-    type: string,
-    payload: number
-}
+import { configureStore } from '@reduxjs/toolkit'
+import counterReducer from '../store/counterSlice'
+import showReducer from '../store/showSlice'
 
 
-const initialState: reducerState = { value: 0 , name : "Mo'men" }
-// Redux Toolkit
-const counterSlice  = createSlice({
-    name : 'counter',
-    initialState,
-    reducers : {
-        increase : (state,action) => {
-            state.value += action.payload
-        },
-        decrease : (state,action) => {
-            state.value -= action.payload
-        }
+const store = configureStore({
+    reducer: {
+        counter: counterReducer,
+        show: showReducer
     }
 })
+export default store;
+
+
+
 
 // Redux Basics
 // const counterReducer = (state = initialState, action: reducerAction) => {
@@ -36,7 +24,3 @@ const counterSlice  = createSlice({
 //     }
 //     return state
 // }
-
-const store = createStore(counterSlice.reducer)
-export const {increase,decrease} = counterSlice.actions
-export default store ;
