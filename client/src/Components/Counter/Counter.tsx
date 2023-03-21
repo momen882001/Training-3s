@@ -2,6 +2,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { increase, decrease } from '../../store/counterSlice'
 import { counterState } from '../../store/counterSlice'
 import { showMe } from '../../store/showSlice'
+import imgRight from '../../assets/counter.png'
+import './Counter.css'
 
 const Counter = () => {
 
@@ -20,18 +22,25 @@ const Counter = () => {
     // }
 
     return (
-        <div>
-            <h1>Redux Basics</h1>
-            {
-                showhandler() &&
-                <>
-                    <div>Counter is : {counterState.counter.value}</div>
-                    {/* <div>{counterState.name}</div> */}
-                    <button onClick={() => dispatch(increase(5))}>Increase +</button>
-                    <button onClick={() => dispatch(decrease(1))}>Decrease -</button>
-                </>
-            }
-            <button onClick={() => dispatch(showMe())}>{showhandler() ? "Hide" : "Show"}</button>
+        <div className="counter-contain" id='counter'>
+            <section className="counter-content">
+                <h1 data-aos="fade-right">Redux Basics</h1>
+                <div className="seperator"></div>
+                {
+                    showhandler() &&
+                    <>
+                        <div data-aos="zoom-out" className='counter-text'>Counter is : {counterState.counter.value}</div>
+                        <div className='redux-btn-contain'>
+                            <button data-aos="zoom-out" onClick={() => dispatch(increase(5))}>+</button>
+                            <button data-aos="zoom-out" onClick={() => dispatch(decrease(1))}>-</button>
+                        </div>
+                    </>
+                }
+                <button data-aos="zoom-out" onClick={() => dispatch(showMe())}>{showhandler() ? "Hide" : "Show"}</button>
+            </section>
+            <section className="img-side">
+                <img src={imgRight} alt="" />
+            </section>
         </div>
     )
 }

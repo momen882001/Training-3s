@@ -4,6 +4,7 @@ import imgLeft from '../../assets/About us.svg'
 
 const About = () => {
   return (
+    <>
     <div className="about-contain" id='about'>
       <section className="img-side">
         <img src={imgLeft} alt="" />
@@ -22,6 +23,8 @@ const About = () => {
       </section>
 
     </div>
+    <div className="separator-section"></div>
+    </>
   )
 }
 

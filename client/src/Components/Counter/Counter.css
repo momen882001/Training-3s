@@ -1,0 +1,85 @@
+.counter-contain {
+    min-height: 100vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.counter-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.counter-contain h1 {
+    font-size: 3rem;
+    color: #015288;
+}
+
+/* .counter-contain p {
+    font-size: 1.2rem;
+    padding: 0rem 2.2rem 2.2rem 2.2rem;
+    text-align: center;
+    opacity: 0.8;
+} */
+
+.redux-btn-contain {
+    padding: 15px;
+    background-color: rgb(214 210 209 / 66%);
+    border-radius: 10px;
+    height: auto;
+    width: 20rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.redux-btn-contain button {
+    color: white;
+    background-color: #015288;
+    border: none;
+    outline: none;
+    transition: 0.5s ease;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.counter-content button {
+    border-radius: 10px;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    color: white;
+    text-transform: capitalize;
+    background-color: #015288;
+    border: none;
+    outline: none;
+    transition: 0.5s ease;
+}
+
+/* .redux-btn-contain button:hover {
+    margin-left: 0.5rem;
+}
+
+.counter-content button:hover {
+    margin-left: 0.5rem;
+} */
+
+.seperator {
+    width: 8.5rem;
+    height: 2px;
+    background-color: #fd7c78;
+    border-radius: 10px;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.counter-text {
+    margin: 1.5rem;
+    font-size: 1.5rem;
+    color: #015288;
+}
