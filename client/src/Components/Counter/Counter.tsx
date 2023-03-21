@@ -1,35 +1,24 @@
-import { useSelector , useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { reducerAction, reducerState, increase, decrease } from '../../store/index'
 
 const Counter = () => {
 
-    type reducerState = {
-        value: number
-    }
-
-    type reducerAction = {
-        type: string,
-        payload: number
-    }
-
     const dispatch = useDispatch()
-    const getState = useSelector((state: reducerState) => state.value)
+    const counterState = useSelector((state: reducerState) => state)
 
-    const increase = () => {
-        const action : reducerAction = {type : "increase" , payload : 2}
-        dispatch(action)
-    }
-
-    const decrease = () => {
-        const action : reducerAction = {type : "decrease" , payload : 4}
-        dispatch(action)
-    }
+    // Redux Basics
+    // const counterOperations = (type: string, payload: number) => {
+    //     const action: reducerAction = { type, payload }
+    //     dispatch(action)
+    // }
 
     return (
         <div>
             <h1>Redux Basics</h1>
-            <div>Counter is : {getState}</div>
-            <button onClick={increase}>Increase +</button>
-            <button onClick={decrease}>Decrease -</button>
+            <div>Counter is : {counterState.value}</div>
+            <div>{counterState.name}</div>
+            <button onClick={() => dispatch(increase(5))}>Increase +</button>
+            <button onClick={() => dispatch(decrease(1))}>Decrease -</button>
         </div>
     )
 }
