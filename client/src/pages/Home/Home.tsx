@@ -8,32 +8,20 @@ import Todo from "../../Components/TodoList/Todo"
 import '../../pages/darkMode.css';
 
 
-const Home = () => {
+const Home = (props: any) => {
 
-  const [theme, setTheme] = useState<string>('light');
 
-  const toggleTheme = () => {
-    if (theme === 'light') {
-      setTheme('dark');
-    } else {
-      setTheme('light');
-    }
-  };
-
-  useEffect(() => {
-    document.body.className = theme;
-  }, [theme]);
 
 
   return (
-    <div className={`${theme}`}>
-      <Navbar toggleTheme={toggleTheme} />
+    <>
+      <Navbar toggleTheme={props.toggleTheme} />
       <Slider />
       <Todo />
       <About />
       <Counter />
       <Contact />
-    </div>
+    </>
   )
 }
 
