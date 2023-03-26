@@ -1,14 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
 import counterSlice from '../store/counterSlice'
 import showSlice from '../store/showSlice'
-import bookSlice from './bookSlice'
+import book from './bookSlice'
 
 
 const store = configureStore({
     reducer: {
         counter: counterSlice.reducer,
         show: showSlice.reducer,
-        book: bookSlice.reducer,
+        book,
     }
 })
 export default store;

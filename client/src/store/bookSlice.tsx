@@ -2,12 +2,12 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const getBooks: any = createAsyncThunk("book/getBooks", async (args, thunkAPI) => {
-    const {rejectWithValue} = thunkAPI;
+    const { rejectWithValue } = thunkAPI;
     try {
         const response = await fetch("http://localhost:5000/books");
         const data = await response.json();
         return data;
-    } catch (err : any) {
+    } catch (err: any) {
         return rejectWithValue(err.message);
     }
 
@@ -29,7 +29,13 @@ export type book = {
     price: number
 }
 
-const initialState: { books: book[] | null , isLoading : boolean , error : string | null } = { books: null , isLoading : false , error: null } ;
+export type bookState = {
+    books: book[] | null,
+    isLoading: boolean,
+    error: string | null
+}
+
+const initialState: bookState = { books: null, isLoading: false, error: null };
 
 const bookSlice = createSlice({
     name: "book",
@@ -54,4 +60,4 @@ const bookSlice = createSlice({
     },
 })
 
-export default bookSlice
+export default bookSlice.reducer
