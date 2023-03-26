@@ -12,4 +12,4 @@ const showSlice = createSlice({
 })
 
 export const { showMe } = showSlice.actions
-export default showSlice.reducer 
+export default showSlice

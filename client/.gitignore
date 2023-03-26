@@ -21,3 +21,89 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+
+# Search Bar training
+
+# import { useState, useEffect } from 'react'
+
+# const Bookstore = () => {
+
+#     const [author, setAuthor] = useState<string>('')
+#     const [filter, setFilter] = useState<string>('')
+
+#     type bookdata = {
+#         name: string,
+#         author: string,
+#         id: number
+#     }
+
+#     const BooksList: bookdata[] = [
+#         {
+#             author: "mo'men",
+#             name: "book 1",
+#             id: 1
+#         },
+#         {
+#             author: "ra2ouf",
+#             name: "book 2",
+#             id: 2
+#         },
+#         {
+#             author: "zizo",
+#             name: "book 3",
+#             id: 3
+#         },
+#         {
+#             author: "omar",
+#             name: "book 4",
+#             id: 4
+#         },
+#     ]
+
+    
+
+#     useEffect(() => {
+#         setFilter(author)
+#     }, [author])
+
+
+#     const handleFilteration = () => {
+#         if (filter.length !== 0) {
+#             const newBooksList = BooksList.filter((book) => book.author.includes(filter))
+#             return newBooksList.map((book, index) => {
+#                 return (
+#                     <div key={index} style={{ borderRadius: "10px", backgroundColor: "gray", margin: "1rem", width: "20rem", height: "10rem", padding: "1rem", color: "white" }}>
+#                         <p>{book.name}</p>
+#                         <p>{book.author}</p>
+#                         <p>{book.id}</p>
+#                     </div>
+#                 )
+#             })
+#         } else {
+#             return BooksList.map((book, index) => {
+#                 return (
+#                     <div key={index} style={{ borderRadius: "10px", backgroundColor: "gray", margin: "1rem", width: "20rem", height: "10rem", padding: "1rem", color: "white" }}>
+#                         <p>{book.name}</p>
+#                         <p>{book.author}</p>
+#                         <p>{book.id}</p>
+#                     </div>
+#                 )
+#             })
+#         }
+#     }
+
+
+
+
+#     return (
+#         <>
+#             <input style={{ margin: "1rem", paddingLeft: "0.5rem" }} placeholder='search for book author' value={author} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAuthor(e.target.value)} type="text" name="" id="" />
+#             {
+#                 handleFilteration()
+#             }
+#         </>
+#     )
+# }
+
+# export default Bookstore

@@ -24,14 +24,17 @@ const counterSlice = createSlice({
     name: 'counter',
     initialState,
     reducers: {
-        increase: (state, action) => {
+        increase: (state, action : counterAction) => {
             state.value += action.payload
         },
-        decrease: (state, action) => {
+        decrease: (state, action : counterAction) => {
             state.value -= action.payload
+        },
+        update: (state) => {
+            state.value = 0
         }
     }
 })
 
-export const { increase, decrease } = counterSlice.actions
-export default counterSlice.reducer
+export const { increase, decrease , update } = counterSlice.actions
+export default counterSlice

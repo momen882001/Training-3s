@@ -1,9 +1,13 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { increase, decrease } from '../../store/counterSlice'
-import { counterState } from '../../store/counterSlice'
+import { increase, decrease, update } from '../../store/counterSlice'
 import { showMe } from '../../store/showSlice'
 import imgRight from '../../assets/counter.png'
 import './Counter.css'
+import { AiOutlineReload } from 'react-icons/ai';
+import IconButton from '@mui/material/IconButton';
+// types
+import { counterState, counterInitState } from '../../store/counterSlice'
+
 
 const Counter = () => {
 
@@ -32,6 +36,9 @@ const Counter = () => {
                         <div data-aos="zoom-out" className='counter-text'>Counter is : {counterState.counter.value}</div>
                         <div className='redux-btn-contain'>
                             <button data-aos="zoom-out" onClick={() => dispatch(increase(5))}>+</button>
+                            <IconButton data-aos="zoom-out" onClick={() => dispatch(update())} sx={{ p: 0 }}>
+                            <AiOutlineReload/>
+                            </IconButton>
                             <button data-aos="zoom-out" onClick={() => dispatch(decrease(1))}>-</button>
                         </div>
                     </>

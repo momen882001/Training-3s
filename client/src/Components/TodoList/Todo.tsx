@@ -2,7 +2,7 @@ import './Todo.css'
 import { IoIosAddCircle } from 'react-icons/io';
 import { FaEdit } from 'react-icons/fa';
 import { AiFillDelete } from 'react-icons/ai';
-import { TbArrowBigTop } from 'react-icons/tb';
+import { AiOutlineArrowUp } from 'react-icons/ai';
 import React, { useRef, useState, useEffect } from 'react'
 import Swal from 'sweetalert2'
 import IconButton from '@mui/material/IconButton';
@@ -226,7 +226,7 @@ const Todo = () => {
                     </div>
                     <a href="#slider">
                         <div className="return-icon" >
-                            <TbArrowBigTop size={27} style={{ color: "#191919" }} />
+                            <AiOutlineArrowUp size={27} style={{ color: "#191919" }} />
                         </div>
                     </a>
                 </section>

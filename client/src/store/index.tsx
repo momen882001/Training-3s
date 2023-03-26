@@ -1,26 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit'
-import counterReducer from '../store/counterSlice'
-import showReducer from '../store/showSlice'
+import counterSlice from '../store/counterSlice'
+import showSlice from '../store/showSlice'
+import bookSlice from './bookSlice'
 
 
 const store = configureStore({
     reducer: {
-        counter: counterReducer,
-        show: showReducer
+        counter: counterSlice.reducer,
+        show: showSlice.reducer,
+        book: bookSlice.reducer,
     }
 })
 export default store;
 
-
-
-
-// Redux Basics
-// const counterReducer = (state = initialState, action: reducerAction) => {
-//     if (action.type === "increase") {
-//         return {...state,value : state.value + action.payload}
-//     }
-//     if (action.type === "decrease") {
-//         return {...state,value : state.value - action.payload}
-//     }
-//     return state
-// }
