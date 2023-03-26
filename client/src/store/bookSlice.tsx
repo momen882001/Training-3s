@@ -1,6 +1,19 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+export type book = {
+    id: number,
+    title: string,
+    description: string,
+    price: number
+}
+
+export type bookState = {
+    books: book[] | null,
+    isLoading: boolean,
+    error: string | null
+}
+
 export const getBooks: any = createAsyncThunk("book/getBooks", async (args, thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
     try {
@@ -20,43 +33,59 @@ export const getBooks: any = createAsyncThunk("book/getBooks", async (args, thun
     // }).catch((err) => {
     //     console.log(err);
     // })
+
+    // 3
+    // try {
+    //     const response = await axios.get("http://localhost:5000/books");
+    //     const books = await response.data;
+    //     return books;
+    //   } catch (error) {
+    //     return rejectWithValue("Error while fetching books");
+    //   }
 })
 
-export type book = {
-    id: number,
-    title: string,
-    description: string,
-    price: number
-}
-
-export type bookState = {
-    books: book[] | null,
-    isLoading: boolean,
-    error: string | null
-}
+export const insertBooks : any = createAsyncThunk("book/insertBooks", async (data, thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
+    try {
+        await axios.post("http://localhost:5000/books", data)
+        return data
+    } catch (err: any) {
+        return rejectWithValue(err.message);
+    }
+})
 
 const initialState: bookState = { books: null, isLoading: false, error: null };
-
 const bookSlice = createSlice({
     name: "book",
     initialState,
     reducers: {},
     extraReducers: {
+        // getBooks 
         [getBooks.pending]: (state, action) => {
             state.isLoading = true;
             state.error = null;
-            console.log(action);
         },
         [getBooks.fulfilled]: (state, action) => {
             state.isLoading = false;
             state.books = action.payload;
-            console.log(action);
         },
         [getBooks.rejected]: (state, action) => {
             state.isLoading = false;
-            state.error = action.payload;
-            console.log(action);
-        }
+            state.error = action.payload as string;
+        },
+        // insertBooks
+        [insertBooks.pending]: (state, action) => {
+            state.isLoading = true;
+            state.error = null;
+        },
+        [insertBooks.fulfilled]: (state, action) => {
+            state.isLoading = false;
+            state.books?.push(action.payload);
+        },
+        [insertBooks.rejected]: (state, action) => {
+            state.isLoading = false;
+            state.error = action.payload as string;
+        },
     },
 })
 

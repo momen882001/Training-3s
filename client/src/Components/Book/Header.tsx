@@ -1,9 +1,17 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { logInOut } from "../../store/authSlice";
+import { useDispatch } from "react-redux";
+// types
+import { authState } from "../../store/authSlice";
 
 const Header = () => {
 
+  const dispatch = useDispatch();
   const { error } = useSelector((state: any) => state.book)
+  const {isLoggedIn} : authState = useSelector((state : any) => state.auth);
+
+
 
 
   return (
@@ -21,8 +29,12 @@ const Header = () => {
         <button
           className="btn btn-outline-primary mr-10"
           type="submit"
+          onClick={() => dispatch(logInOut())}
+          style={{cursor: "pointer"}}
         >
-          Login
+          {
+            isLoggedIn ? "LogOut" : "LogIn" 
+          }
         </button>
       </nav>
     </>

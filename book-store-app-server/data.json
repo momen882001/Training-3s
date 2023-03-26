@@ -1,16 +1,22 @@
 {
-    "books": [
-        {
-            "id": 1,
-            "title": "learn react",
-            "description": "learn react from scratch",
-            "price": 30
-        },
-        {
-            "id": 2,
-            "title": "learn angular",
-            "description": "learn angular from scratch",
-            "price": 50
-        }
-    ]
+  "books": [
+    {
+      "id": 1,
+      "title": "learn react",
+      "description": "learn react from scratch",
+      "price": 30
+    },
+    {
+      "id": 2,
+      "title": "learn angular",
+      "description": "learn angular from scratch",
+      "price": 50
+    },
+    {
+      "id": 3,
+      "title": "Be Aware",
+      "price": 60,
+      "description": "very nice book"
+    }
+  ]
 }

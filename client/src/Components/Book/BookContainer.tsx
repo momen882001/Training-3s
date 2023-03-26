@@ -7,7 +7,7 @@ const BookContainer = () => {
   return (
     <>
       <hr className="my-5" />
-      <div className="row">
+      <div className="row" style={{marginBottom:"2rem"}}>
         <div className="col">
           <BooksList
           />
