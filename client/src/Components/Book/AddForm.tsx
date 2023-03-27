@@ -17,7 +17,11 @@ const Addform = () => {
   const handleSubmit = (e : FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (title.current?.value === "" || price.current?.value === "" || description.current?.value === "") {
-      alert("All fields are required");
+      Swal.fire(
+        'All fields are required',
+        '',
+        'error'
+      )
     } else {
       const newBook : book = {
         id : 0,
