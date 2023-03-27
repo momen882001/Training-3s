@@ -20,6 +20,7 @@ import './Navbar.css'
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
+import { Link } from 'react-router-dom';
 
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -209,6 +210,20 @@ function Navbar(props: any) {
                     </Typography>
                   </a>
                 </MenuItem>
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <a className='todo-link' style={{ color: "black" }} href="#counter">
+                    <Typography textAlign="center">
+                      Counter
+                    </Typography>
+                  </a>
+                </MenuItem>
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Link to="/bookstore" style={{textDecoration :"none" , color : "black"}}>
+                    <Typography textAlign="center">
+                      BookStore
+                    </Typography>
+                    </Link>
+                </MenuItem>
               </Menu>
             </Box>
             <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -248,6 +263,20 @@ function Navbar(props: any) {
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 <a className='todo-link' href="#todo">Todo</a>
+              </Button>
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                <a className='todo-link' href="#counter">Counter</a>
+              </Button>
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                <Link to='/bookstore' style={{textDecoration:"none" , color:"white"}}>
+                BookStore
+                </Link>
               </Button>
             </Box>
 

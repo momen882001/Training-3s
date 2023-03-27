@@ -1,11 +1,17 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector , useDispatch } from "react-redux";
+import { deleteBooks } from "../../store/bookSlice";
 // types
 import { bookState } from "../../store/bookSlice";
 import { authState } from "../../store/authSlice";
 
-const BooksList = () => {
+type BookListProps = {
+  getBookId : (id : number) => void
+}
 
+const BooksList = (props : BookListProps ) => {
+
+  const dispatch = useDispatch();
   const getBookStatedata : bookState = useSelector((state : any) => state.book);
   const {isLoggedIn} : authState = useSelector((state : any) => state.auth);
 
@@ -14,9 +20,9 @@ const BooksList = () => {
       <h2>Books List</h2>
         <ul className="list-group">
                 {
-                  getBookStatedata.books === null?
+                  getBookStatedata.books?.length === 0?
                   <p>There are no books available!</p> :
-                  getBookStatedata.books.map((item) => (
+                  getBookStatedata.books?.map((item) => (
                     <li
                   className="list-group-item d-flex  justify-content-between align-items-center"
                   key={item.id}
@@ -28,6 +34,7 @@ const BooksList = () => {
                       className="btn btn-primary"
                       disabled={!isLoggedIn}
                       style={{cursor: "pointer"}}
+                      onClick={() => props.getBookId(item.id)}
                     >
                       Read
                     </button>
@@ -36,6 +43,7 @@ const BooksList = () => {
                       className="btn btn-danger"
                       disabled={!isLoggedIn}
                       style={{cursor: "pointer"}}
+                      onClick={() => dispatch(deleteBooks(item.id))}
                     >
                       Delete
                     </button>

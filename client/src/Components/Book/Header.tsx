@@ -4,6 +4,7 @@ import { logInOut } from "../../store/authSlice";
 import { useDispatch } from "react-redux";
 // types
 import { authState } from "../../store/authSlice";
+import { Link } from "react-router-dom";
 
 const Header = () => {
 
@@ -24,7 +25,11 @@ const Header = () => {
       }
 
       <nav className="navbar navbar-dark bg-dark p-2">
-        <span className="navbar-brand mb-0 h1">My Books</span>
+        <span className="navbar-brand mb-0 h1">
+          <Link to='/' style={{textDecoration:"none" , color:"white"}}>
+          My Books
+          </Link>
+          </span>
 
         <button
           className="btn btn-outline-primary mr-10"

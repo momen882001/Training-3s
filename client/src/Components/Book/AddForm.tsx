@@ -1,10 +1,12 @@
-import React , {useRef , FormEvent} from "react";
+import React , {useRef , FormEvent , useState} from "react";
 import { useSelector , useDispatch } from "react-redux";
 import { authState } from "../../store/authSlice";
 import { book } from "../../store/bookSlice";
 import { insertBooks } from "../../store/bookSlice";
 
 const Addform = () => {
+
+  const [counter,setCounter] = useState<number>(1)
 
   const dispatch = useDispatch()
   const { isLoggedIn }: authState = useSelector((state: any) => state.auth);
@@ -18,6 +20,7 @@ const Addform = () => {
       alert("All fields are required");
     } else {
       const newBook : book = {
+        // id : counter,
         id : 0,
         title: title.current?.value ?? "",
         price: price.current?.valueAsNumber ?? 0, 
@@ -28,6 +31,7 @@ const Addform = () => {
     if(title.current)  title.current.value = ""
     if(price.current)  price.current.value = ""
     if(description.current)  description.current.value = ""
+    // setCounter(counter + 1)
     }
   };
 
