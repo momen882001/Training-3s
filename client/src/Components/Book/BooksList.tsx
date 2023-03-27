@@ -39,7 +39,7 @@ const BooksList = (props: BookListProps) => {
       {/* <div className="ul-container" > */}
       <ul className="list-group">
         {
-          getBookStatedata.books?.length === 0 ?
+          getBookStatedata.books?.length === 0  ?
             <p>There are no books available!</p> :
             getBookStatedata.books?.map((item) => (
               <li

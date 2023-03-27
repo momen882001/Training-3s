@@ -25,9 +25,9 @@ const Addform = () => {
     } else {
       const newBook : book = {
         id : 0,
-        title: title.current?.value ?? "",
-        price: price.current?.valueAsNumber ?? 0, 
-        description: description.current?.value ?? "",
+        title: title.current?.value as string,
+        price: price.current?.valueAsNumber as number, 
+        description: description.current?.value as string,
       };
       dispatch(insertBooks(newBook))
     if(title.current)  title.current.value = ""
