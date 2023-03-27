@@ -8,3 +8,12 @@
     width: 1px;
     background: #dfdfdf;
   }
+
+.ul-container {
+  background-color: #dfdfdf;
+  height: 9rem;
+  border-radius: 8px;
+  width: 100%;
+  overflow-y: scroll;
+  padding: 1rem;
+}
